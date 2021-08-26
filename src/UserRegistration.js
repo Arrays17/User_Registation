@@ -10,7 +10,7 @@ export const UserRegistration = () => {
 
     };
     return <div className="container">
-        <h3>User Registration</h3>
+        <h3 className="center">User Registration</h3>
         <UserForm onSubmit={onSubmit} />
     </div>
 }
