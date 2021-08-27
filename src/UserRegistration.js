@@ -8,7 +8,7 @@ export const UserRegistration = () => {
     
     const onSubmit = async (data) => {
       await registerUser(data)
-      history.push("/")
+      history.push("/UserList")
     };
 
     return <div className="container">

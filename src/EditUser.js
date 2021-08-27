@@ -5,7 +5,7 @@ import { UserForm } from './UserForm';
 
 export const EditUser = () => {
     const match = useRouteMatch();
-    const [user, setUser] = useState();
+    const [user, setUser] = useState([]);
     const history = useHistory();
 
     useEffect(() => {
@@ -14,7 +14,8 @@ export const EditUser = () => {
             setUser(user)
         }
         fetchUser()
-    })
+        // eslint-disable-next-line
+    }, [])
 
     const onSubmit = async (data) => {
         await updateUser(data, match.params.id)

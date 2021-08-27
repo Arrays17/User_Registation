@@ -2,6 +2,9 @@ const express = require("express")
 const cors = require("cors")
 const mongoose = require("mongoose")
 const User = require("./models/User")
+const methodOverride = require('method-override')
+const { response } = require("express");
+
 
 mongoose.connect('mongodb://127.0.0.1:27017/users', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -15,6 +18,7 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
+app.use(methodOverride('_method'))
 
 app.get("/UserList", (req, res) => {
     User.find((err, users) => {
@@ -60,6 +64,18 @@ app.post("/:id", (req, res) => {
             }).catch(err => res.status(500).send(err.message))
         }
     })
+})
+
+app.delete("/delete/:id", (req, res) => {
+    console.log("executing")
+    const id = req.params.id
+    User.findByIdAndRemove(id).exec()
+    let user
+    try {
+      user =  User.findByIdAndDelete(id).exec()
+    } catch (err) {
+      throw err
+    }
 })
 
 app.listen(PORT, () => {
