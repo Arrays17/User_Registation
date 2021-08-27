@@ -25,7 +25,7 @@ export const UserList = () => {
                         <th>Full Name</th>
                         <th>Gender</th>
                         <th>Birthday</th>
-                        <th>Action</th>
+                        <th colSpan="2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -49,6 +49,9 @@ export const UserList = () => {
                         </td>
                         <td>
                             <Link to={`/edit/${user._id}`}>Edit</Link>
+                        </td>
+                        <td>
+                            <Link to={`/delete/${user._id}`}>Delete</Link>
                         </td>
                         </tr>
                     ))

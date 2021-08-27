@@ -37,9 +37,9 @@ export const UserForm = ({ user, onSubmit }) => {
                 <div className="form-group">
                     <label htmlFor="gender">Gender</label>
                     <select className="form-select" {...register("gender")} id="gender" required>
-                        <option value="male">Male</option>
-                       <option value="female">Female</option>
-                        <option value="none">Prefer not to say</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
                     </select>
                 </div>
                 <div className="form-group">
