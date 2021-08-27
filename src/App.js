@@ -22,7 +22,7 @@ function App() {
       </div>
       <Switch>
         <Route exact path="/" component={UserRegistration}/>
-        <Route path="/Edit/:id" component={EditUser}/>
+        <Route path="/edit/:id" component={EditUser}/>
         <Route path="/UserList" component={UserList}/>
       </Switch>
     </div>

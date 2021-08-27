@@ -16,6 +16,25 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
+app.get("/UserList", (req, res) => {
+    User.find((err, users) => {
+        if (err){
+            console.log(err)
+        } else {
+            res.json(users)
+        }
+    })
+})
+
+app.post("/", (req, res) => {
+    const user = new User(req.body)
+    user.save().then((user) => {
+        res.json(user)
+        }).catch(err => {
+            res.status(500).send(err.message)
+        })
+})
+
 app.listen(PORT, () => {
     console.log("Server is running on port" + PORT)
 })
