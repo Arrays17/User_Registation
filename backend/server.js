@@ -66,17 +66,18 @@ app.post("/:id", (req, res) => {
     })
 })
 
-app.delete("/delete/:id", (req, res) => {
-    console.log("executing")
-    const id = req.params.id
-    User.findByIdAndRemove(id).exec()
-    let user
+app.delete('/:id', async (req, res) => {
+    let id = req.params.id;
+    let user;
     try {
-      user =  User.findByIdAndDelete(id).exec()
+      user = await User.findByIdAndDelete(id);
     } catch (err) {
-      throw err
+      throw err;
     }
-})
+    if (user) return res.json({ deleted: true });
+    return res.json({ deleted: false });
+});
+
 
 app.listen(PORT, () => {
     console.log("Server is running on port" + PORT)

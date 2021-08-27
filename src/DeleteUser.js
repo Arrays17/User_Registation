@@ -17,7 +17,7 @@ export const DeleteUser = () => {
     }, [])
 
     const onSubmit = async () => {
-        await deleteUser(match.params.id)
+        await deleteUser(user._id)
         history.push("/UserList")
     }
 
